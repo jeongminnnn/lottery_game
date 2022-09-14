@@ -1,107 +1,36 @@
-// @import './common.scss';
+@import './common.scss';
 @import "./reset.css";
-
-@mixin center {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-@mixin isHidden {
-    z-index: -1;
-    opacity: 0;
-}
-@mixin isNotHidden {
-    z-index: 1;
-    opacity: 1;
-}
-$color--err: #f00;
-$color--point: #e6007a;
-$color--point-hover: #fff;
-$color--btn-unactive: #aaa;
 
 // LOGIN VAR
 $height--logo: 100px;
 $height--formWrap: 60vh;
-
-body {
-    .main-btn {
-        display: inline-block;
-        position: relative;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 15px 40px;
-        overflow: hidden;
-        border: 1px solid $color--point;
-        border-radius: 2em;
-        font-weight: 700;
-        will-change: transform;
-        background-color: transparent;
-        color: $color--point;
-        transform: scale(0.999);
-        font-size: .95em;
-        &::before {
-            content:'';
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            border-radius: 2em;
-            left: -100%;
-            top: 0;
-            background-color: $color--point;
-            transition: all 0.2s ease, border 1ms ease;
-        }
-        &:hover, &:focus {
-            color: $color--point-hover;
-            transform: scale(1);
-            border-color: transparent;
-            &::before {
-                left: 0;
-                width: 100%;
-                z-index: -1;
-            }
-        }
-        &.reverse {
-            background-color: $color--point;
-            color: $color--point-hover;
-            transition: all .5s;
-            &::before {
-                display: none;
-            }
-            &:hover, &:focus {
-                color: $color--point;
-                border-color: $color--point;
-                background-color: transparent;
-            }
-        }
-        &.unactive {
-            border-color: $color--btn-unactive;
-            color: $color--btn-unactive;
-            cursor: default;
-            &::before {
-                display: none;
-            }
-        }
-    }
-    .isNone {
-        display: none !important;
-    }
-}
 
 .wrap {
     background-image: url('../static/img/login_bg.jpg');
     background-size: cover;
     background-position: center;
 }
+
 main {
     height: 100vh;
     position: relative;
     display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
     align-items: center;
     background-color: transparent;
+    .prevWrap {
+        position: relative;
+        z-index: 1;
+        a {
+            display: block;
+            width: fit-content;
+            img {
+                width: 30px;
+            }
+        }
+    }
     &::after {
         content: '';
         position: absolute;
@@ -280,30 +209,23 @@ main {
 }
 
 // MEDIA QUERY
-$breakpoint-laptop: 1200px;
-$breakpoint-tablet: 849px;
-@mixin -tablet {    // ~ tablet
-    @media (max-width: #{$breakpoint-tablet}) {
-        @content;
-    }
-}
-@mixin tablet-laptop {    // tablet ~ laptop
-    @media (min-width: #{$breakpoint-tablet + 1}) and (max-width: #{$breakpoint-laptop}) {
-        @content;  
-    }
-}
-@mixin laptop- {    // laptop ~
-    @media (min-width: #{$breakpoint-laptop + 1}) {
-        @content; 
-    }
-}
 @include -tablet {
-    body .main-btn {
-        padding: 15px 20px;
+    main #form-wrap {
+        &.loginShow, &.signupShow {
+            .form-left {
+                display: none;
+            }
+            .form-right {
+                left: 0;
+            }
+        }
+        > div {
+            width: 100%;
+        }
     }
 }
-@include tablet-laptop {
-    .main-btn {
-        padding: 15px 20px;
+@include laptop- {
+    main #form-wrap > div {
+        width: 50%;
     }
 }

@@ -1,23 +1,58 @@
 import '../scss/login.scss'
 
-window.onload = function() {
-    const btnEls = document.querySelectorAll('[title^="btn_"]')
-    const formWrap = document.getElementById('form-wrap')
-    btnEls.forEach(el => {
-    
-        el.addEventListener('click', () => {
-    
-            if(el.title.split('_')[1] === 'signup') {
-    
-                formWrap.className = 'signupShow'
-                signupFunc()
-            } else {
-    
-                formWrap.className = 'loginShow'
-            }
-        })
-    })
+window.onload = () => {
+
+    if ( window.matchMedia('(min-width: 850px)').matches )  resizeHandler.pcVersion()
+    else resizeHandler.mobVersion()
 }
+
+const resizeHandler = {
+    pcVersion: () => {
+        const btnEls = document.querySelectorAll('[title^="btn_"]')
+        const formWrap = document.getElementById('form-wrap')
+
+        btnEls.forEach(el => {
+    
+            el.addEventListener('click', () => {
+        
+                if(el.title.split('_')[1] === 'signup') {
+        
+                    formWrap.className = 'signupShow'
+                    signupFunc()
+                } else {
+        
+                    formWrap.className = 'loginShow'
+                }
+            })
+        })
+    },
+    mobVersion: () => {
+
+        console.log('mob')
+
+        const btnEls = document.querySelectorAll('[title^="btn_"]')
+        const formWrap = document.getElementById('form-wrap')
+
+        btnEls.forEach(el => {
+    
+            el.addEventListener('click', () => {
+
+                if(el.title.split('_')[1] === 'signup') {
+        
+                    formWrap.className = 'signupShow'
+                } else {
+        
+                    formWrap.className = 'loginShow'
+                }
+            })
+        })
+    }
+}
+window.addEventListener('resize', detectMediaSize, false);
+function detectMediaSize() { 
+    if ( window.matchMedia('(min-width: 850px)').matches )  resizeHandler.pcVersion()
+    else resizeHandler.mobVersion()
+};
 
 function signupFunc() {
     

@@ -1,44 +1,25 @@
 @import "./reset.css";
+@import "./common.scss";
 
 // VAR
-$height--footer: 100px;
 $height--header: 60px;
-$btn-color: #9AD3DE;
+$height--footer: 100px;
 $btn-font-color: #666;
 
-body {
-    // COMMON
-    div.inner {
-        width: 90%;
-        margin: 0 auto;
-        position: relative;
-    }
-    .btn {
-        border: none;
-        border-radius: 4px;
-        padding: 15px 30px;
-        font-size: 18px;
-        color: #fff;
-        background-color: $btn-color;
-        &:hover {
-            background-color: lighten($btn-color, 10%);
-        }
-    }
-}
-
 .wrap {
-    height: calc(100vh);
-    overflow: hidden;
+    min-height: 100vh;
+    
 
     // HEADER
     header {
-        background-color: #fff;
         height: $height--header;
+        background-color: #fff;
         .inner {
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;     
+            position: relative;
         }
         .loginWrap {
             position: absolute;
@@ -103,7 +84,6 @@ body {
             grid-template-columns: repeat(9, 50px);
             grid-template-rows: repeat(5, 50px);
             gap: 5px;
-            cursor: pointer;
             &-item {
                 text-align: center;
                 line-height: 50px;
@@ -111,6 +91,7 @@ body {
                 font-size: 20px;
                 color: #fff;
                 opacity: .6;
+                cursor: pointer;
                 filter: grayscale(1);
                 transition: .2s;
                 &.active, &.clickable:hover {
@@ -129,4 +110,32 @@ body {
     &.hidden {
         display: none;
     }
+}
+
+// MEDIA QUERY
+@include -tablet {
+    body .sub-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    #popup-lotto .popupWrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .grid {
+            grid-template-columns: repeat(5, 8vw);
+            grid-template-rows: repeat(9, 8vw);
+            &-item {
+                line-height: 30px;
+                font-size: 15px;
+            }
+        }
+        form fieldset {
+            // flex-direction: column;
+            button + button {
+                margin-left: 10px;
+            }
+        }
+    }
+    
 }

@@ -1,0 +1,313 @@
+// VAR
+$color--point: #e6007a;
+$color--bg: #172026;
+$color--font-main: #1e1e1e;
+$color--point-hover: #fff;
+$color--btn-unactive: #aaa;
+$color--err: #f00;
+$color--sub-btn: #9AD3DE;
+
+@mixin center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+@mixin isHidden {
+    z-index: -1;
+    opacity: 0;
+}
+@mixin isNotHidden {
+    z-index: 1;
+    opacity: 1;
+}
+
+// COMMON
+body {
+    color: $color--font-main;
+    letter-spacing: -.02em;
+    .inner {
+        width: 1140px;
+        margin: 0 auto;
+    }
+    section {
+        padding-top: 12vh;
+        padding-bottom: 10vh;
+        .section-title {
+            font-size: 3em;
+        }
+        .section-subTit {
+            font-size: 1.9em;
+        }
+    }
+    .main-btn {
+        display: inline-block;
+        position: relative;
+        width: fit-content;
+        padding: 15px 40px;
+        overflow: hidden;
+        border: 1px solid $color--point;
+        border-radius: 2em;
+        font-weight: 700;
+        will-change: transform;
+        background-color: transparent;
+        color: $color--point;
+        transform: scale(0.999);
+        font-size: .95em;
+        &::before {
+            content:'';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 2em;
+            left: -100%;
+            top: 0;
+            background-color: $color--point;
+            transition: all 0.2s ease, border 1ms ease;
+        }
+        &:hover, &:focus {
+            color: $color--point-hover;
+            transform: scale(1);
+            border-color: transparent;
+            &::before {
+                left: 0;
+                width: 100%;
+                z-index: -1;
+            }
+        }
+        &.reverse {
+            background-color: $color--point;
+            color: $color--point-hover;
+            transition: all .5s;
+            &::before {
+                display: none;
+            }
+            &:hover, &:focus {
+                color: $color--point;
+                border-color: $color--point;
+                background-color: transparent;
+            }
+        }
+        &.unactive {
+            border-color: $color--btn-unactive;
+            color: $color--btn-unactive;
+            cursor: default;
+            &::before {
+                display: none;
+            }
+        }
+    }
+    .sub-btn {
+        border: none;
+        border-radius: 4px;
+        padding: 15px 30px;
+        font-size: 18px;
+        color: #fff;
+        background-color: $color--sub-btn;
+        &:hover {
+            background-color: lighten($color--sub-btn, 10%);
+        }
+    }
+    .btnWrap {
+        text-align: center;
+        width: 550px; 
+        margin: 0 auto;
+        b {
+            display: block;
+            font-size: 2em;
+            padding-bottom: 1.5em;
+            line-height: 1.5;
+        }
+    }
+
+    a.border-btm {
+        color: inherit;
+        position: relative;
+        &::after {
+            content:'';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            transition: bottom .2s;
+        }
+        &:hover::after {
+            bottom: -2px;
+        }
+    }
+    &.scrNone {
+        overflow: hidden;
+        touch-action: none;
+    }
+    .isNone {
+        display: none !important;
+    }
+    .isHidden {
+        z-index: -1;
+        opacity: 0;
+    }
+}
+
+// MEDIA QUERY
+$breakpoint-laptop: 1200px;
+$breakpoint-tablet: 849px;
+@mixin -tablet {    // ~ tablet
+    @media (max-width: #{$breakpoint-tablet}) {
+        @content;
+    }
+}
+@mixin tablet-laptop {    // tablet ~ laptop
+    @media (min-width: #{$breakpoint-tablet + 1}) and (max-width: #{$breakpoint-laptop}) {
+        @content;  
+    }
+}
+@mixin laptop- {    // laptop ~
+    @media (min-width: #{$breakpoint-laptop + 1}) {
+        @content; 
+    }
+}
+
+@include -tablet {
+    body {
+        font-size: 14px;
+        .desktop {
+            display: none !important;
+        }
+        .mob {
+            display: block !important;
+        }
+        .inner {
+            width: 90%;
+        }
+        section {
+            padding-top: 5vh;
+            .section-title {
+                font-size: 2em;
+            }
+        }
+        .btnWrap {
+            width: 100%;
+            text-align: center;
+            b {
+                font-size: 1.5em;
+            }
+        }
+        .main-btn {
+            padding: 15px 20px;
+        }
+        a.border-btm {
+            display: inline-block;
+        }
+    }
+    header {
+        .gnb {
+            height: 50px;
+            nav .mob {
+                svg {
+                    width: 50px;
+                    cursor: pointer;
+                    -webkit-tap-highlight-color: transparent; 
+                    transition: transform .4s;
+                    user-select: none;
+                    &.active {
+                        transform: rotate(45deg); 
+                        .top {
+                            stroke-dashoffset: -98px;
+                        }
+                        .bottom {
+                            stroke-dashoffset: -138px;
+                        }
+                    }
+                    path {
+                        fill: none;
+                        transition: stroke-dasharray .4s, stroke-dashoffset .4s;
+                        stroke: $color--point;
+                        stroke-width: 5.5;
+                        stroke-linecap: round;
+                        &.top {
+                            stroke-dasharray: 40 139;
+                        }
+                        &.bottom {
+                            stroke-dasharray: 40 180;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include tablet-laptop {
+    body {
+        .desktop {
+            display: none !important;
+        }
+        .mob {
+            display: none !important;
+        }
+        .inner {
+            width: 90%;
+        }
+        .btnWrap {
+            width: 100%;
+            text-align: center;
+            b {
+                font-size: 1.5em;
+            }
+        }
+        a.border-btm {
+            display: inline-block;
+        }
+    }
+    header {
+        .gnb {
+            height: 50px;
+            nav .mob {
+                svg {
+                    width: 50px;
+                    cursor: pointer;
+                    -webkit-tap-highlight-color: transparent; 
+                    transition: transform .4s;
+                    user-select: none;
+                    &.active {
+                        transform: rotate(45deg); 
+                        .top {
+                            stroke-dashoffset: -98px;
+                        }
+                        .bottom {
+                            stroke-dashoffset: -138px;
+                        }
+                    }
+                    path {
+                        fill: none;
+                        transition: stroke-dasharray .4s, stroke-dashoffset .4s;
+                        stroke: $color--point;
+                        stroke-width: 5.5;
+                        stroke-linecap: round;
+                        &.top {
+                            stroke-dasharray: 40 139;
+                        }
+                        &.bottom {
+                            stroke-dasharray: 40 180;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include laptop-  {
+    body {
+        .desktop {
+            display: block !important;
+        }
+        .mob {
+            display: none !important;
+        }
+    }
+}
