@@ -1,7 +1,8 @@
 import '../scss/main.scss'
 const pickNum = 6
 
-{
+window.onload = function() {
+
     // btn 속성 reset
     const buttonEls = document.querySelectorAll('button')
     for (let i = 0; i < buttonEls.length; i++) {
@@ -30,36 +31,36 @@ const pickNum = 6
             EventHandler.submitToggle()
         })
     }
-}
 
-document.querySelector('.reset').addEventListener('click', function() {
-    // 1
-    EventHandler.activeClear()
-    // 2
-    EventHandler.submitToggle()
-})
-
-document.querySelector('.random').addEventListener('click', function() {
-
-    const activeEls = document.querySelectorAll('.active')
-    let activeLength = activeEls.length
-
-    while(activeLength < pickNum) {
-        EventHandler.randomAddActive()
-        activeLength += 1
-    }
-})
-
-// OPEN POPUP
-document.querySelector('button[data-id="popup-lotto"]').addEventListener('click', function(e) {
-
-    EventHandler.openPopup(event)
-
-    // CLOSE POPUP
-    document.querySelector('#popup-lotto').addEventListener('click', function() {
-        EventHandler.closePopup(event)
+    document.querySelector('.reset').addEventListener('click', function() {
+        // 1
+        EventHandler.activeClear()
+        // 2
+        EventHandler.submitToggle()
     })
-})
+    
+    document.querySelector('.random').addEventListener('click', function() {
+    
+        const activeEls = document.querySelectorAll('.active')
+        let activeLength = activeEls.length
+    
+        while(activeLength < pickNum) {
+            EventHandler.randomAddActive()
+            activeLength += 1
+        }
+    })
+    
+    // OPEN POPUP
+    document.querySelector('button[data-id="popup-lotto"]').addEventListener('click', function(e) {
+    
+        EventHandler.openPopup(event)
+    
+        // CLOSE POPUP
+        document.querySelector('#popup-lotto').addEventListener('click', function() {
+            EventHandler.closePopup(event)
+        })
+    })
+}
 
 const EventHandler = {
     activeClear: () => {

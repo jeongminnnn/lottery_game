@@ -1,21 +1,23 @@
 import '../scss/login.scss'
 
-const btnEls = document.querySelectorAll('[title^="btn_"]')
-const formWrap = document.getElementById('form-wrap')
-btnEls.forEach(el => {
-
-    el.addEventListener('click', () => {
-
-        if(el.title.split('_')[1] === 'signup') {
-
-            formWrap.className = 'signupShow'
-            signupFunc()
-        } else {
-
-            formWrap.className = 'loginShow'
-        }
+window.onload = function() {
+    const btnEls = document.querySelectorAll('[title^="btn_"]')
+    const formWrap = document.getElementById('form-wrap')
+    btnEls.forEach(el => {
+    
+        el.addEventListener('click', () => {
+    
+            if(el.title.split('_')[1] === 'signup') {
+    
+                formWrap.className = 'signupShow'
+                signupFunc()
+            } else {
+    
+                formWrap.className = 'loginShow'
+            }
+        })
     })
-})
+}
 
 function signupFunc() {
     
