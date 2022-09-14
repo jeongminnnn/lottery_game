@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="./index_module.js" type="module"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="inner">
+                <h1><a href="#" title="logo">LOGO</a></h1>
+                <div class="loginWrap">
+                    <a href="/login.html" title="login페이지">LOGIN</a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="inner">
+                <!-- <p class="title">응모하기</p> -->
+                <button class="btn" data-id="popup-lotto">응모하기</button>
+            </div>
+        </main>
+        <footer>
+            <div class="inner">
+                <h3>FOOTER</h3>
+            </div>
+        </footer>
+    </div>
+    <div id="popup-lotto" class="hidden" aria-hidden="true">
+        <div class="popupWrap" >
+            <div class="grid"></div>
+            <form action="#" method="POST">
+                <fieldset>
+                    <button class="reset btn">선택 취소</button>
+                    <button class="random btn">자동 선택</button>
+                    <button class="submit btn">응모 하기</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

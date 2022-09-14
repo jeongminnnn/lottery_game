@@ -1,0 +1,132 @@
+@import "./reset.css";
+
+// VAR
+$height--footer: 100px;
+$height--header: 60px;
+$btn-color: #9AD3DE;
+$btn-font-color: #666;
+
+body {
+    // COMMON
+    div.inner {
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+    }
+    .btn {
+        border: none;
+        border-radius: 4px;
+        padding: 15px 30px;
+        font-size: 18px;
+        color: #fff;
+        background-color: $btn-color;
+        &:hover {
+            background-color: lighten($btn-color, 10%);
+        }
+    }
+}
+
+.wrap {
+    height: calc(100vh);
+    overflow: hidden;
+
+    // HEADER
+    header {
+        background-color: #fff;
+        height: $height--header;
+        .inner {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;     
+        }
+        .loginWrap {
+            position: absolute;
+            right: 0;
+        }
+    }
+
+    // MAIN
+    main {
+        height: calc(100vh - ($height--header + $height--footer));
+        .inner {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .title {
+                color: $btn-font-color;
+                font-size: 40px;
+                padding-bottom: 30px;
+            }
+        }
+    }
+
+    // FOOTER
+    footer {
+
+        height: $height--footer;
+        .inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h3 {
+            font-size: 2rem;
+        }
+    }
+}
+
+#popup-lotto {
+    background: rgba(100, 100, 100, 0.6);
+	position: fixed;
+	z-index: 10;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+    .popupWrap {
+        max-width: 490px;
+		width: 70%;
+		position: fixed;
+		transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+		background-color: #fff;
+		padding: 30px;
+		border-radius: 10px;
+		box-shadow: 2px 2px 10px 0px rgba(#000, 0.4);
+        transition: .4s;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(9, 50px);
+            grid-template-rows: repeat(5, 50px);
+            gap: 5px;
+            cursor: pointer;
+            &-item {
+                text-align: center;
+                line-height: 50px;
+                border-radius: 100%;
+                font-size: 20px;
+                color: #fff;
+                opacity: .6;
+                filter: grayscale(1);
+                transition: .2s;
+                &.active, &.clickable:hover {
+                    opacity: 1;
+                    filter: grayscale(0);
+                }
+            }
+        }
+        form fieldset {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+        }
+    }
+    &.hidden {
+        display: none;
+    }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;700&display=swap" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="./login_module.js" type="module"></script>
+    
+    <title>CloudMine :: Login</title>
+</head>
+<body>
+    <div class="wrap">
+        <main>
+            <div id="form-wrap" class="loginShow">
+                <div class="form-left">
+                    <p class="logo"><a href="/"><img src="#" alt="logo"></a></p>
+                    <div class="left-main">
+                        <p class="login-title">
+                            <strong>Have an Account?</strong>
+                            <a href="#none" title="btn_login" class="main-btn reverse">Log In</a>
+                        </p>
+                        <p class="signup-title">
+                            <strong>Create Account</strong>
+                            <a href="#none" title="btn_signup" class="main-btn reverse">Sign Up</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="form-right">
+                    <div class="right-main">
+                        <div class="login_form">
+                            <form action="#" method="POST">
+                                <fieldset>
+                                    <legend>Log In</legend>
+                                    <div class="inputWrap">
+                                        <p class="useremail">
+                                            <label for="email">Email Address</label>
+                                            <input type="email" name="email" title="email" placeholder="example@cloudmine.com" maxlength="30" required/>
+                                        </p>
+                                        <p class="userpwd">
+                                            <label for="userpwd">PASSWORD</label>
+                                            <input type="password" name="userpwd" title="userpwd" placeholder="Enter Password" maxlength="25" minlength="8" required/>
+                                        </p>
+                                    </div>
+                                    <a href="#" class="main-btn">Log in</a>
+                                    <p class="linkWrap">
+                                        <a href="#">Forgot your <b>Password</b> or <b>Username</b>?</a>
+                                        <a href="#none" title="btn_signup">Not a member? <b>Sign Up</b></a>
+                                    </p>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="signup_form">
+                            <form id="signup" action="#" method="POST">
+                                <fieldset>
+                                    <legend>Sign Up</legend>
+                                    <div class="inputWrap">
+                                        <!-- <p class="username">
+                                            <label for="names">Username</label>
+                                            <input type="text" name="names" title="names" placeholder="User Name" maxlength="30" required/>
+                                        </p> -->
+                                        <p class="useremail">
+                                            <label for="email">Email Address</label>
+                                            <input type="email" name="email" title="email" placeholder="Email" maxlength="30" required/>
+                                        </p>
+                                        <p class="userpwd">
+                                            <label for="pass0">PASSWORD</label>
+                                            <input type="password" name="pass0" title="pass0" placeholder="Password" maxlength="25" minlength="8" required/>
+                                        </p>
+                                        <p class="userpwd">
+                                            <label for="pass1">CONFIRM PASSWORD</label>
+                                            <input type="password" name="pass1" title="pass1" placeholder="Confirm Password" maxlength="25" minlength="8" required/>
+                                        </p>
+                                        <p class="errMsg isNone">Please make sure your passwords match.</p>
+                                    </div>
+                                    <button class="main-btn unactive">Sign up</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="inner">
+                <div class="footer-top">
+                    <ul>
+                        <li>
+                            <p class="title">General</p>
+                            <p><a href="#">About</a></p>
+                            <p><a href="#">FAQ</a></p>
+                        </li>
+                        <li>
+                            <p class="title">General</p>
+                            <p><a href="#">About</a></p>
+                            <p><a href="#">FAQ</a></p>
+                        </li>
+                        <li>
+                            <p class="title">General</p>
+                            <p><a href="#">About</a></p>
+                            <p><a href="#">FAQ</a></p>
+                        </li>
+                    </ul>
+                    <div> 
+                        <p class="snsWrap">
+                            <a href="#"><img src="#" alt="sns"></a>
+                            <a href="#"><img src="#" alt="sns"></a>
+                            <a href="#"><img src="#" alt="sns"></a>
+                            <a href="#"><img src="#" alt="sns"></a>
+                        </p>
+                        <p class="btnWrap">
+                            <b>
+                                Subscribe to the newsletter to hear about Polkadot updates and events.
+                            </b>
+                            <a href="#" class="main-btn">Subscribe</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="footer-btm">
+                    <p class="logo"><img src="#" alt="mob버전 logo"></p>
+                    <dl class="copy">
+                        <dt>&copy;2022</dt> 
+                        <dd><a href="#">Web3 Foundation</a></dd>
+                        <dd><a href="#">Privacy</a></dd>
+                        <dd><a href="#">Privacy</a></dd>
+                        <dd><a href="#">Privacy</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
